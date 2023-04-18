@@ -6,7 +6,7 @@ class Chronometre extends Component {
   constructor(){
     super();
     this.state = {
-      totalSeconds :0,
+      totalSeconds :3700,
       status: 'unstarted',
       tick: null,
     };
@@ -37,6 +37,7 @@ class Chronometre extends Component {
     this.setState({
       totalSeconds: 0,
       status: 'unstarted',
+      tick: clearInterval(this.state.tick),
     });
     console.log('reset');
     console.log(this.state);
@@ -44,12 +45,13 @@ class Chronometre extends Component {
   
 
 
+
   render(){
     return(
       <div className="Chronometre">
         <h1>Chronometre</h1>
         <div className="Chronometre-display">
-          <span>{this.state.totalSeconds}</span>
+          <span>{parseInt(this.state.totalSeconds/3600)} : {parseInt(this.state.totalSeconds/60)} : {parseInt(this.state.totalSeconds%60)}</span>
         </div>
         <div className="Chronometre-controls">
           <button onClick={this.startChrono}>Start</button>
